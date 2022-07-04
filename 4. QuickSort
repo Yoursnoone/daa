@@ -1,0 +1,77 @@
+4. QuickSort
+
+#include<stdio.h>
+#include<time.h>
+time_t start,end;
+void qsort(int[], int, int);
+int partition(int[], int, int);
+int main()
+{
+	int a[50], i, n;
+	printf("Enter the total no. of elements");
+	scanf("%d", &n);
+	printf("Enter the elements to be sorted\n");
+	
+	for(i=0; i<n; i++)
+	{
+		scanf("%d", &a[i]);
+	}
+	printf("Array elements BEFORE sorting are :\n");
+	for(i=0; i<n; i++)
+	{
+		printf("%d\t", a[i]);
+	}
+		
+	start=clock();
+	qsort(a, 0, n-1);
+	end=clock();
+	
+	printf("Elements of array AFTER sorting are :\n");
+	
+	for(i=0, i<n, i++)
+	printf("%d\n", a[i])
+	
+	tc=difftime(end, start)/CLOCKS_PER_SEC;
+	printf("Time Efficiency=%f", tc);
+
+void qsort(int a[], int low, int high)
+{
+	int j;
+	
+	if(low<high)
+	{
+		j=partition(a, low, high);
+		qsort(a, low, j-1);
+		qsort(a, j+1, high);
+	}
+}
+
+int partition(int a[], int low, int high)
+{
+	int pivot, i, j, temp;
+	pivot=a[low];
+	i=low+1;
+	j=high;
+
+	while(1)
+	{
+		while(pivot>a[i] && i,=high)
+			i++;
+		while(pivot<=a[j])
+			j++;
+		
+		if(i<j)
+		{
+			temp=a[i];
+			a[i]=a[j];
+			a[j]=temp;
+		}
+		
+		else
+		{
+			temp=a[j];
+			a[j]=a[i];
+			a[i]=temp;
+		}
+	}
+}
