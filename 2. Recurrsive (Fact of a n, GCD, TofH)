@@ -1,0 +1,87 @@
+2. Recurrsive
+_____________________________________________________________________________________________________
+(a) Factorial of a number.
+
+#include <stdio.h>
+int factorial(int);// function declaration
+int main()
+{
+     int num,result;
+     printf("Enter a number to find it's Factorial: ");
+     scanf("%d", &num);
+ 
+    if (num < 0)
+    {
+         printf("Factorial of negative number not possible\n");
+    }
+    else
+    {
+         result = factorial(num);//function calling
+         printf("The Factorial of %d is %d.\n", num, result);
+    }
+    return 0;
+}
+
+int factorial(int num)// function defnition
+    {
+    if (num == 0 || num == 1)
+    {
+        return 1;
+    }
+    else
+    {
+        return(num * factorial(num - 1));
+    }
+}
+_____________________________________________________________________________________________________
+(b) GCD.
+
+#include <stdio.h>
+int gcd(int a, int b)
+{
+    if (b == 0)
+    return a;
+    return gcd(b, a % b);
+}
+
+int main()
+{
+    int a ,b;
+    printf(“Enter the value of a and b\n”);
+    scanf(“%d %d”,&a,&b);
+    printf("GCD of %d and %d is %d ", a, b, gcd(a, b));
+    return 0;
+}
+___________________________________________________________________________________________
+(c) Tower of Hanoi.
+
+#include <stdio.h>
+#include <stdlib.h>
+#include<time.h>
+void hanoi(int n, char rodFrom, char rodMiddle, char rodTo)
+{
+    if(n==1)
+    {
+        printf("Disk 1 moved from %c to %c \n",rodFrom,rodTo);
+        return;
+    }
+
+    hanoi(n-1,rodFrom,rodTo,rodMiddle);
+    printf("Disk %d moved from %c to %c \n",n,rodFrom,rodTo);
+    hanoi(n-1,rodMiddle,rodFrom,rodTo);
+}
+
+int main()
+{
+    int n;
+    clock_t start, end; // time_t start, end;
+    double total;
+    printf("enter total number of disc\n");
+    scanf("%d",&n);
+    start = clock();
+    hanoi(n, 'A', 'B', 'C');
+    end = clock();
+    total = (double)(end-start)/CLOCKS_PER_SEC; //
+    printf(“Time Taken=%lf”,total);
+    return 0;
+}_
